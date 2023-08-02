@@ -65,9 +65,7 @@ public class CustomerServiceImpl implements CustomerServiceInterface{
         updateResponse.setPassword(foundCustomer.getPassword());
         updateResponse.setPhoneNumber(foundCustomer.getPhoneNumber());
         return updateResponse;
-
     }
-
     @Override
     public DeleteResponse deleteAccount(DeleteRequest deleteRequest) throws NotFoundException {
         Customer foundCustomer = customerRepository.findCustomerByEmail(deleteRequest.getEmail());
