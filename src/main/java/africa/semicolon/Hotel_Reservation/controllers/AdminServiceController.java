@@ -25,19 +25,19 @@ public class AdminServiceController {
         return registeredAdmin;
     }
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public LoginResponse loginAdmin(@RequestBody LoginRequest loginRequest) throws NotFoundException, IllegalParametersException {
         LoginResponse loggedInAdmin = adminServiceInterface.loginAdmin(loginRequest);
         return loggedInAdmin;
     }
 
-    @PostMapping("/update/{email}")
+    @PutMapping("/update/{email}")
     public UpdateResponse updateAdmin(@PathVariable String email, @RequestBody UpdateRequest updateRequest) throws NotFoundException {
         UpdateResponse updatedAdmin = adminServiceInterface.updateAdmin(email,updateRequest);
         return updatedAdmin;
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public DeleteResponse deleteAdminAccount(@RequestBody DeleteRequest deleteRequest) throws NotFoundException {
         DeleteResponse deletedAdmin = adminServiceInterface.deleteAccount(deleteRequest);
         return deletedAdmin;
@@ -55,19 +55,19 @@ public class AdminServiceController {
         return availableRoom;
     }
 
-    @PostMapping("/find/{roomNumber}")
+    @GetMapping("/find/{roomNumber}")
     public RoomResponse findRoomByRoomNumber(@PathVariable int roomNumber){
         RoomResponse foundRoom = adminServiceInterface.findRoomByRoomNumber(roomNumber);
         return foundRoom;
     }
 
-    @PostMapping("/delete/{roomNumber}")
+    @DeleteMapping("/delete/{roomNumber}")
     public DeleteResponse deleteRoomByRoomNumber(@PathVariable int roomNumber) throws NotFoundException {
         DeleteResponse deletedRoom = adminServiceInterface.deleteRoomByRoomNumber(roomNumber);
         return deletedRoom;
     }
 
-    @PostMapping("/findAllRoom")
+    @GetMapping("/findAllRoom")
     public List<Room> findAllRoom(){
         List<Room> allRooms = adminServiceInterface.findAllRooms();
         return allRooms;
@@ -78,27 +78,27 @@ public class AdminServiceController {
         return adminServiceInterface.deleteAllRooms();
     }
 
-    @PostMapping("/findAllReservations")
+    @GetMapping("/findAllReservations")
     public List<Reservation> findAllReservations(){
         List<Reservation> allReservations = adminServiceInterface.findAllReservations();
         return allReservations;
     }
 
-    @PostMapping("/reservation/{email}")
+    @GetMapping("/reservation/{email}")
     public List<Reservation> findResrvationsByCustomerEmail(@PathVariable String email) throws NotFoundException {
         return adminServiceInterface.findAllReservationsByCustomerEmail(email);
     }
 
-    @PostMapping("/deleteAllReservations")
+    @DeleteMapping("/deleteAllReservations")
     public DeleteResponse deleteAllReservations(){
         return adminServiceInterface.deleteAllReservations();
     }
 
-    @PostMapping("/deleteReservation/{email}")
+    @DeleteMapping("/deleteReservation/{email}")
     public DeleteResponse deleteReservationByCustomerEmail(@PathVariable String email) throws NotFoundException {
         return adminServiceInterface.deleteReservationsByCustomerEmail(email);
     }
-    @PostMapping("/availableRooms")
+    @GetMapping("/availableRooms")
     public List<Room> findAllAvailableRooms(){
         return adminServiceInterface.findAllAvailableRooms();
     }
